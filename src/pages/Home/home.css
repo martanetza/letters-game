@@ -1,0 +1,28 @@
+.container {
+  width: fit-content;
+  margin: 100px auto;
+}
+
+.frame {
+  height: 500px;
+  width: 800px;
+  margin: 20px auto;
+  background: transparent;
+  font-size: 1rem;
+  border: 1px solid black;
+  overflow: hidden;
+  position: relative;
+ 
+}
+
+.line{
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  bottom: 120px;
+  position: absolute;
+}
+
+.is-not-running {
+  animation-play-state: paused;
+}
