@@ -11,7 +11,7 @@ const Letter = styled.div`
   position: absolute;
   animation-name: ${(props) => (props.animation ? 'slideDown' : 'none')};
   bottom: ${(props) => (!props.animation ? '0px' : ' ')};
-  animation-duration: 10s;
+  animation-duration: ${(props) => props.animationDuration}s;
   animation-fill-mode: forwards;
 
   @keyframes slideDown {

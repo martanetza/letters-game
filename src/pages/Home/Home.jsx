@@ -43,6 +43,7 @@ export default function Home() {
     ];
     const randomColor = createRandomColor();
     const randomSize = Math.floor(Math.random() * 100) + 20;
+    const randomAnimationDuration = Math.floor(Math.random() * 10) + 2;
     const randomLeftPosition =
       Math.floor(Math.random() * (800 - randomSize)) + 1;
 
@@ -69,9 +70,10 @@ export default function Home() {
           letter_id: keyNumber,
           key: keyNumber,
           randomLetter: randomLetter,
+          animationDuration: randomAnimationDuration,
           onAnimationEnd: () => createBottomLetter(),
         });
-      }, 1000);
+      }, Math.floor(Math.random() * 1000) + 1000);
       if (letter) {
         setLetters((prevLetters) => [...prevLetters, letter]);
       }
@@ -104,21 +106,23 @@ export default function Home() {
       <div className="frame animation">
         {bottomLetters.length <= 20 ? (
           <>
-            {letters.map((item) => (
-              <Letter
-                key={item.key}
-                className={!isRunning ? 'is-not-running' : ''}
-                animation={item.animation}
-                animationIsRunning={item.isRunning}
-                color={item.color}
-                size={item.size}
-                left={item.left}
-                letter_id={item.letter_id}
-                onAnimationEnd={item.onAnimationEnd}
-              >
-                {item.randomLetter}
-              </Letter>
-            ))}
+            {bottomLetters &&
+              letters.map((item) => (
+                <Letter
+                  key={item.key}
+                  className={!isRunning ? 'is-not-running' : ''}
+                  animation={item.animation}
+                  animationIsRunning={item.isRunning}
+                  animationDuration={item.animationDuration}
+                  color={item.color}
+                  size={item.size}
+                  left={item.left}
+                  letter_id={item.letter_id}
+                  onAnimationEnd={item.onAnimationEnd}
+                >
+                  {item.randomLetter}
+                </Letter>
+              ))}
             {bottomLetters &&
               bottomLetters.map((item) => (
                 <Letter
